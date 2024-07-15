@@ -1,6 +1,6 @@
 // Please see the formal definition of Yul grammar in
 // `resource/yul-grammar/yul.bnf`
-use std::fmt::{self, write, Display, Formatter};
+use std::fmt::{self, Display, Formatter};
 
 static mut INDENT_LEVEL: usize = 0;
 fn indent(f: &mut Formatter) -> fmt::Result {
@@ -22,7 +22,6 @@ fn decrease_indent() {
         INDENT_LEVEL -= 1;
     }
 }
-//TODO support AST node serialization and deserialization
 /// Object = 'object' StringLiteral '{' Code ( Object | Data )* '}'
 #[derive(Debug, Clone, Hash, PartialEq)]
 pub struct Object {
