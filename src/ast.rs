@@ -432,5 +432,7 @@ mod tests {
         let output = std::fs::read_to_string(output_file).unwrap();
         let re_parsed_object = parser.parse(&output).unwrap();
         assert_eq!(format!("{}", object), format!("{}", re_parsed_object));
+        // The indentation should be correct
+        assert_eq!(unsafe { INDENT_LEVEL }, 0);
     }
 }
