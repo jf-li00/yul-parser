@@ -134,8 +134,8 @@ pub enum Statement {
     Break,
     Continue,
     Block(Block),
-    FunctionDefinition(Box<FunctionDefinition>),
-    FunctionCall(Box<FunctionCall>),
+    FunctionDefinition(FunctionDefinition),
+    FunctionCall(FunctionCall),
 }
 
 impl Display for Statement {

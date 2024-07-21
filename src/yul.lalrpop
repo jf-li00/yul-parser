@@ -71,7 +71,7 @@ pub Statement: ast::Statement = {
     <FunctionDefinition> => <>,
     <VariableDeclaration> => <>,
     <Assignment> => <>,
-    <FunctionCall> => ast::Statement::FunctionCall(Box::new(<>)),
+    <FunctionCall> => ast::Statement::FunctionCall(<>),
     <If> => <>,
     <For> => <>,
     <Switch> => <>,
@@ -88,12 +88,12 @@ pub Statement: ast::Statement = {
 
 pub FunctionDefinition: ast::Statement = {
     "function" <name: Identifier> "(" <params: TypedIdentifierList?> ")" <returns:("->" <TypedIdentifierList>)?> <body: Block> => 
-    ast::Statement::FunctionDefinition(Box::new(ast::FunctionDefinition {
+    ast::Statement::FunctionDefinition(ast::FunctionDefinition {
         name: name,
         params: params.unwrap_or_default(),
         returns: returns.unwrap_or_default(),
         body: body,
-    })),
+    }),
 }
 
 pub VariableDeclaration: ast::Statement = {
